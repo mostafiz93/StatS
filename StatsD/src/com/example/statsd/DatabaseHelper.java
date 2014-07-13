@@ -44,8 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	//inings table column
 	private static final String ININGS_ID = "inings_id";
-	private static final String ININGS_RUN = "inings_run";
 	private static final String ININGS_BALL = "inings_ball";
+	private static final String ININGS_RUN = "inings_run";
 	private static final String ININGS_WICKET = "inings_wicket";
 	private static final String ININGS_DATE = "inings_date";
 	
@@ -66,11 +66,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	
 	private static final String MATCH_TABLE_SQL = "CREATE TABLE "
-			+ MATCH_TABLE + " (" + MATCH_ID + " INTEGER PRIMARY KEY, "
-			+ MATCH_OVER + " , "
+			+ MATCH_TABLE + " ( " 
+			+ MATCH_ID + " INTEGER PRIMARY KEY, "
+			+ MATCH_OVER + " INTEGER, "
 			+ MATCH_DATE + " TEXT )" ;
 	
-	
+	private static final String ININGS_TABLE_SQL = "CREATE TABLE "
+			+ ININGS_TABLE + " ( "
+			+ ININGS_ID + " INTEGER PRIMARY KEY, "
+			+ ININGS_BALL + " INTEGER, "
+			+ ININGS_RUN + " INTEGER, "
+			+ ININGS_WICKET + " INTEGER, "
+			+ ININGS_DATE + " TEXT )" ;
 			
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -79,14 +86,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		
 		Log.d("TAGG" ,PLAYER_TABLE_SQL);
+		Log.d("TAGG" ,MATCH_TABLE_SQL);
+		Log.d("TAGG" ,ININGS_TABLE_SQL);
+		
 		db.execSQL(PLAYER_TABLE_SQL);
+		db.execSQL(MATCH_TABLE_SQL);
+		db.execSQL(ININGS_TABLE_SQL);
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-
+		db.execSQL("DROP TABLE IF EXISTS " + PLAYER_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " + MATCH_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " + ININGS_TABLE);
+		
+		onCreate(db);
 	}
 	
 	public long insertPlayer(Player plr){
@@ -122,11 +139,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		if(cursor != null)
 			cursor.moveToFirst();
 		
-		/*plr.Name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
-		plr.Address = cursor.getString(cursor.getColumnIndex(ADDRESS_FIELD));
-		plr.Info = cursor.getString(cursor.getColumnIndex(INFO_FIELD));
-		plr.average = cursor.getDouble(cursor.getColumnIndex(columnName))
-		*/
+		plr.run = cursor.getInt(cursor.getColumnIndex(PLAYER_RUN));
+		plr.wickets = cursor.getInt(cursor.getColumnIndex(PLAYER_WICKET));
+		plr.balls = cursor.getInt(cursor.getColumnIndex(PLAYER_BALLS));
+		plr.average = cursor.getDouble(cursor.getColumnIndex(PLAYER_AVERAGE));
+		plr.stRate = cursor.getDouble(cursor.getColumnIndex(PLAYER_STRATE));
+		plr.Name = cursor.getString(cursor.getColumnIndex(PLAYER_NAME));
+		plr.Address = cursor.getString(cursor.getColumnIndex(PLAYER_ADDRESS));
+		plr.Info = cursor.getString(cursor.getColumnIndex(PLAYER_INFO));
 		
 		return plr;
 	}

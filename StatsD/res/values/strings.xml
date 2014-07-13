@@ -4,5 +4,6 @@
     <string name="app_name">StatsD</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_player">AddPlayer</string>
+    <string name="title_activity_player_statistics">PlayerStatistics</string>
 
 </resources>

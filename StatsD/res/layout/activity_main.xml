@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical" >
+	
+	    <Button
+	        android:id="@+id/btnAddPlayer"
+	        android:text="Add Player"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="30dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:onClick="addPlayer"
+	         />
+	
+	    <Button
+	        android:id="@+id/btnAddMatch"
+	        android:text="Add Match"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+	
+	    <Button
+	        android:id="@+id/btnMatchStats"
+	        android:text="Match Statistics"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+	
+	    <Button
+	        android:id="@+id/btnPlayerStats"
+	        android:text="Player Statistics"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+	
+	    <Button
+	        android:id="@+id/btnBatingStats"
+	        android:text="Batting Statistics"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+	    
+	    <Button
+	        android:id="@+id/bowlingStats"
+	        android:text="Bowling Statistics"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="30dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+	
+	</LinearLayout>
+	
+</ScrollView>

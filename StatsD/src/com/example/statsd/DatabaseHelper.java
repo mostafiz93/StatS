@@ -28,14 +28,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	//player table columns
 	private static final String PLAYER_ID = "player_id";
-	private static final String PLAYER_NAME = "playerName";
-	private static final String PLAYER_ADDRESS = "PlayerAddress";
-	private static final String PLAYER_INFO = "PlayerInfo";
-	private static final String PLAYER_RUN = "PlayerRun";
-	private static final String PLAYER_WICKET = "PlayerWicket";
-	private static final String PLAYER_BALLS = "PlayerBall";
-	private static final String PLAYER_AVERAGE = "PlayerAverage";
-	private static final String PLAYER_STRATE = "PlayerStRate";
+	private static final String PLAYER_NAME = "player_name";
+	private static final String PLAYER_ADDRESS = "player_address";
+	private static final String PLAYER_INFO = "player_info";
+	private static final String PLAYER_RUN = "player_run";
+	private static final String PLAYER_WICKET = "player_wicket";
+	private static final String PLAYER_BALLS = "player_ball";
+	private static final String PLAYER_AVERAGE = "player_average";
+	private static final String PLAYER_STRATE = "player_st_rate";
 	
 	//match table columns
 	private static final String MATCH_ID = "match_id";
@@ -54,20 +54,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	//SQL
 	private static final String PLAYER_TABLE_SQL = "CREATE TABLE "
 			+ PLAYER_TABLE + " ( " 
-			+ PLAYER_ID + " INT PRIMARY KEY, "
+			+ PLAYER_ID + " INTEGER PRIMARY KEY, "
 			+ PLAYER_NAME + " TEXT, " 
 			+ PLAYER_ADDRESS + " TEXT, " 
 			+ PLAYER_INFO + " TEXT, "
-			+ PLAYER_RUN + " INT, "
-			+ PLAYER_WICKET + " INT, "
-			+ PLAYER_BALLS + " INT, "
+			+ PLAYER_RUN + " INTEGER, "
+			+ PLAYER_WICKET + " INTEGER, "
+			+ PLAYER_BALLS + " INTEGER, "
 			+ PLAYER_AVERAGE + " REAL, "
 			+ PLAYER_STRATE + " REAL )" ;
 	
 	
 	private static final String MATCH_TABLE_SQL = "CREATE TABLE "
 			+ MATCH_TABLE + " (" + MATCH_ID + " INTEGER PRIMARY KEY, "
-			+ MATCH_OVER + " NUMBER, "
+			+ MATCH_OVER + " , "
 			+ MATCH_DATE + " TEXT )" ;
 	
 	
@@ -95,14 +95,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		Log.d("TAGX", PLAYER_TABLE_SQL);
 		
-		values.put(PLAYER_NAME, plr.Name);			Log.d("TAGA","Came here");
-		values.put(PLAYER_ADDRESS, plr.Address);	Log.d("TAGB","Came here");
-		values.put(PLAYER_INFO,plr.Info);			Log.d("TAGC","Came here");
-		//values.put(PLAYER_RUN,plr.run);				Log.d("TAGD","Came here");
-		values.put(PLAYER_WICKET,plr.wickets);		Log.d("TAGE","Came here");
-		values.put(PLAYER_BALLS,plr.balls);			Log.d("TAGF","Came here");
-		values.put(PLAYER_AVERAGE,plr.average);		Log.d("TAGG","Came here");
-		//values.put(PLAYER_STRATE,plr.stRate);		Log.d("TAGH","Came here");
+		values.put(PLAYER_NAME, plr.Name);			
+		values.put(PLAYER_ADDRESS, plr.Address);	
+		values.put(PLAYER_INFO,plr.Info);			
+		values.put(PLAYER_RUN,plr.run);				
+		values.put(PLAYER_WICKET,plr.wickets);		
+		values.put(PLAYER_BALLS,plr.balls);			
+		values.put(PLAYER_AVERAGE,plr.average);		
+		values.put(PLAYER_STRATE,plr.stRate);		
 		
 		long inserted = db.insert(PLAYER_TABLE, null, values);
 		

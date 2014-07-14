@@ -16,6 +16,7 @@ public final class R {
         public static final int stats3=0x7f020002;
     }
     public static final class id {
+        public static final int actvChhose=0x7f06000f;
         public static final int bowlingStats=0x7f06000c;
         public static final int btnAddMatch=0x7f060008;
         public static final int btnAddPlayer=0x7f060007;
@@ -26,14 +27,27 @@ public final class R {
         public static final int etAdd=0x7f060003;
         public static final int etInfo=0x7f060005;
         public static final int etName=0x7f060001;
+        public static final int listView1=0x7f060010;
+        public static final int scrollView1=0x7f06000d;
         public static final int tvAdd=0x7f060002;
+        public static final int tvAddress=0x7f060011;
+        public static final int tvAverage=0x7f060016;
+        public static final int tvAverageValue=0x7f060017;
+        public static final int tvChoose=0x7f06000e;
         public static final int tvInfo=0x7f060004;
         public static final int tvName=0x7f060000;
+        public static final int tvRun=0x7f060012;
+        public static final int tvRunValue=0x7f060013;
+        public static final int tvStRate=0x7f060018;
+        public static final int tvStRateVlaue=0x7f060019;
+        public static final int tvWicket=0x7f060014;
+        public static final int tvWicketValue=0x7f060015;
     }
     public static final class layout {
         public static final int activity_add_player=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_player_statistics=0x7f030002;
+        public static final int list_item=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

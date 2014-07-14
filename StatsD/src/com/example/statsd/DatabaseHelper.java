@@ -1,5 +1,8 @@
 package com.example.statsd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -149,6 +152,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		plr.Info = cursor.getString(cursor.getColumnIndex(PLAYER_INFO));
 		
 		return plr;
+	}
+	
+	public List<String> readAllNames(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		List<String> names = new ArrayList<String>();
+		
+		String selectQuery = "SELECT " + PLAYER_NAME + " FROM " + PLAYER_TABLE;
+		Cursor c =db.rawQuery(selectQuery, null);
+		
+		if (c.moveToFirst()) {
+            do {
+                names.add(c.getString( c.getColumnIndex(PLAYER_NAME)));
+            } while (c.moveToNext());
+        }
+         
+		return names;
+	}
+	
+	public ArrayList<Player> readAllPlayers(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		
+		String selectQuery = "SELECT * FROM " + PLAYER_TABLE;
+		Cursor c = db.rawQuery(selectQuery, null);
+		
+		if (c.moveToFirst()){
+			do {
+				Player plr = new Player();
+				
+				plr.setName(c.getString(c.getColumnIndex(PLAYER_NAME)));
+				plr.setAddress(c.getString(c.getColumnIndex(PLAYER_ADDRESS)));
+				plr.setInfo(c.getString(c.getColumnIndex(PLAYER_INFO)));
+				
+				plr.setId(c.getInt(c.getColumnIndex(PLAYER_ID)));
+				plr.setRun(c.getInt(c.getColumnIndex(PLAYER_RUN)));
+				plr.setWickets(c.getInt(c.getColumnIndex(PLAYER_WICKET)));
+				plr.setBalls(c.getInt(c.getColumnIndex(PLAYER_BALLS)));
+				
+				plr.setAverage(c.getDouble(c.getColumnIndex(PLAYER_AVERAGE)));
+				plr.setStRate(c.getDouble(c.getColumnIndex(PLAYER_STRATE)));
+				
+				playerList.add(plr);
+			} while(c.moveToNext());
+		}
+		return playerList;
 	}
 	
 	

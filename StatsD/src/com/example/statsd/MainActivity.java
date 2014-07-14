@@ -20,4 +20,10 @@ public class MainActivity extends Activity {
 		Intent in = new Intent(this, AddPlayer.class);
 		startActivity(in);
 	}
+	
+	
+	public void playerStatistics(View v){
+		Intent in = new Intent(this, PlayerStatistics.class);
+		startActivity(in);
+	}
 }

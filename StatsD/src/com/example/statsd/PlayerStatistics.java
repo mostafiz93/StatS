@@ -28,6 +28,7 @@ public class PlayerStatistics extends Activity {
 	int n;
 	String nameArray[];
 	
+	AutoCompleteTextView autoTv;
 	
 	
 	
@@ -53,13 +54,28 @@ public class PlayerStatistics extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 
 				android.R.layout.simple_dropdown_item_1line, nameArray);
 		
-		AutoCompleteTextView autoTv = (AutoCompleteTextView) findViewById(R.id.actvChhose);
+		autoTv = (AutoCompleteTextView) findViewById(R.id.actvChhose);
 		
 		autoTv.setAdapter(adapter);
 		
 	}
 	
-	public void showStatistics(View v){
+	public void showSingleStatistics(View v){
+		String selectedPlayer = autoTv.getText().toString();
+		Player plr = db.readSinglePlyer(selectedPlayer);
+		
+		
+		
+		if(plr != null){           // still crashing if empty value is given
+			ArrayList<Player> players = new ArrayList<>();
+			players.add(plr);
+			adapter = new CustomAdapterPlayerStats(this, players);
+			lvPlayer.setAdapter(adapter);
+		} else 
+			Toast.makeText(this, "No Data Found", 1).show();
+	}
+	
+	public void showAllStatistics(View v){
 		
 		Toast.makeText(this, Integer.toString(n), 1).show();
 		ArrayList<Player> players = db.readAllPlayers();
@@ -67,7 +83,8 @@ public class PlayerStatistics extends Activity {
 		if(players != null && players.size() > 0 ) {
 			adapter = new CustomAdapterPlayerStats(this, players);
 			lvPlayer.setAdapter(adapter);
-		}
+		} else 
+			Toast.makeText(this, "No Data Found", 1).show();
 		
 	}
 }

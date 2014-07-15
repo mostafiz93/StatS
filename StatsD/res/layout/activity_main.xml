@@ -28,6 +28,18 @@
 			android:layout_marginRight="30dp"
 			android:layout_marginBottom="15dp"
 	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:onClick="addMatch" />
+	    
+	    <Button
+	        android:id="@+id/btnAddInings"
+	        android:text="Add Inings"
+	        android:padding="30dp"
+			android:layout_marginLeft="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="30dp"
+			android:layout_marginBottom="15dp"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content" />
 	
 	    <Button
@@ -39,7 +51,8 @@
 			android:layout_marginRight="30dp"
 			android:layout_marginBottom="15dp"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" />
+	        android:layout_height="wrap_content"
+	        android:onClick="matchStatistics" />
 	
 	    <Button
 	        android:id="@+id/btnPlayerStats"

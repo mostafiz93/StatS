@@ -30,6 +30,14 @@
             android:name=".PlayerStatistics"
             android:label="@string/title_activity_player_statistics" >
         </activity>
+        <activity
+            android:name=".AddMatch"
+            android:label="@string/title_activity_add_match" >
+        </activity>
+        <activity
+            android:name=".MatchStatistics"
+            android:label="@string/title_activity_match_statistics" >
+        </activity>
     </application>
 
 </manifest>

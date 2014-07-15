@@ -5,5 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_player">AddPlayer</string>
     <string name="title_activity_player_statistics">PlayerStatistics</string>
+    <string name="title_activity_add_match">AddMatch</string>
+    <string name="title_activity_match_statistics">MatchStatistics</string>
 
 </resources>

@@ -21,6 +21,15 @@ public class MainActivity extends Activity {
 		startActivity(in);
 	}
 	
+	public void addMatch(View v){
+		Intent in = new Intent(this, AddMatch.class);
+		startActivity(in);
+	}
+	
+	public void matchStatistics(View v){
+		Intent in = new Intent(this, MatchStatistics.class);
+		startActivity(in);
+	}
 	
 	public void playerStatistics(View v){
 		Intent in = new Intent(this, PlayerStatistics.class);

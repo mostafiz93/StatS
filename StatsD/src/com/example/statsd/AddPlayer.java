@@ -42,7 +42,7 @@ public class AddPlayer extends Activity {
 		else 
 			Toast.makeText(this , "Error occurred", 1).show();
 		
-		Toast.makeText(this, pl.toString(), 1).show();
+		//Toast.makeText(this, pl.toString(), 1).show();
 	}
 	 
 }

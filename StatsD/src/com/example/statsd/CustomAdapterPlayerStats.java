@@ -18,7 +18,7 @@ public class CustomAdapterPlayerStats extends ArrayAdapter<Player> {
 	ArrayList<Player> playerList;
 	
 	public CustomAdapterPlayerStats(Context context, ArrayList<Player> players) {
-		super(context, R.layout.list_item, players);
+		super(context, R.layout.list_item_player, players);
 		// TODO Auto-generated constructor stub
 		this.con = (Activity) context;
 		this.playerList = players;
@@ -29,7 +29,7 @@ public class CustomAdapterPlayerStats extends ArrayAdapter<Player> {
 		View v =null;
 		if(convertView == null){
 			LayoutInflater inflater = con.getLayoutInflater();
-			v = inflater.inflate(R.layout.list_item, null);
+			v = inflater.inflate(R.layout.list_item_player, null);
 			
 			TextView txtName = (TextView) v.findViewById(R.id.tvName);
 			TextView txtAddress  = (TextView) v.findViewById(R.id.tvAddress);
@@ -49,7 +49,7 @@ public class CustomAdapterPlayerStats extends ArrayAdapter<Player> {
 			txtName.setText(plr.getName());
 			txtAddress.setText(plr.getAddress());
 			txtRun.setText("Run      : ");
-			txtRunValue.setText(String.valueOf(plr.getRun()));
+			txtRunValue.setText(String.valueOf(plr.getId()));
 			txtWicket.setText(" Wickets :");
 			txtWicketValue.setText(String.valueOf(plr.getWickets()));
 			txtAverage.setText("Average : ");

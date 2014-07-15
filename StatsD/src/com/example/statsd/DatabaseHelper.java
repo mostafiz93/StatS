@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	//database information
 	public static final String DB_NAME = "statistics";
-	public static final int DB_VERSION = 1;
+	public static final int DB_VERSION = 3;
 	
 	
 	
@@ -25,6 +25,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String MATCH_TABLE = "match";
 	private static final String ININGS_TABLE = "inings";
 					
+	
+	
 	//common colums
 	private static final String ID_FIELD = "id";
 	
@@ -44,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String MATCH_ID = "match_id";
 	private static final String MATCH_OVER = "match_over";
 	private static final String MATCH_DATE = "match_date";
+	private static final String MATCH_TIME = "match_time";
 	
 	//inings table column
 	private static final String ININGS_ID = "inings_id";
@@ -72,7 +75,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			+ MATCH_TABLE + " ( " 
 			+ MATCH_ID + " INTEGER PRIMARY KEY, "
 			+ MATCH_OVER + " INTEGER, "
-			+ MATCH_DATE + " TEXT )" ;
+			+ MATCH_DATE + " TEXT , "
+			+ MATCH_TIME + " TEXT )" ;
 	
 	private static final String ININGS_TABLE_SQL = "CREATE TABLE "
 			+ ININGS_TABLE + " ( "
@@ -102,9 +106,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		db.execSQL("DROP TABLE IF EXISTS " + PLAYER_TABLE);
-		db.execSQL("DROP TABLE IF EXISTS " + MATCH_TABLE);
-		db.execSQL("DROP TABLE IF EXISTS " + ININGS_TABLE);
+		db.execSQL("DROP TABLE  " + PLAYER_TABLE);
+		db.execSQL("DROP TABLE  " + MATCH_TABLE);
+		db.execSQL("DROP TABLE  " + ININGS_TABLE);
 		
 		onCreate(db);
 	}
@@ -130,11 +134,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return inserted;
 	}
 	
-	public Player readSinglePlyer(int id){
+	public Player readSinglePlyer(String playerName){
 		SQLiteDatabase db = this.getReadableDatabase();
-		String selectQuery = "SELECT * FROM " + PLAYER_TABLE + " WHERE " + ID_FIELD + " = " + id;
+		String selectQuery = "SELECT * FROM " + PLAYER_TABLE + " WHERE " + 
+				PLAYER_NAME + " = " + "\"" + playerName + "\"";
 		
-		Log.e("Data base ", selectQuery);
+		Log.d("tagx ", selectQuery);
 		
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		
@@ -174,7 +179,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		
-		String selectQuery = "SELECT * FROM " + PLAYER_TABLE;
+		String selectQuery = "SELECT * FROM " + PLAYER_TABLE + " ORDER BY " + PLAYER_ID + " ASC ";
 		Cursor c = db.rawQuery(selectQuery, null);
 		
 		if (c.moveToFirst()){
@@ -199,8 +204,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return playerList;
 	}
 	
+	public long insertMatch(Match m){
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues v = new ContentValues();
+		
+		Log.d("MatchSQL", MATCH_TABLE_SQL);
+		
+		v.put(MATCH_OVER, m.over);
+		v.put(MATCH_DATE, m.matchDate);
+		v.put(MATCH_TIME, m.matchTime);
+		
+		long inserted = db.insert(MATCH_TABLE, null, v);
+		return inserted;
+	}
 	
-	
+	ArrayList<Match> readAllMatches(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		ArrayList<Match> matchList = new ArrayList<Match>();
+		
+		String selectQuery = "SELECT * FROM " + MATCH_TABLE + " ORDER BY " + 
+				MATCH_ID;
+		Cursor c = db.rawQuery(selectQuery, null);
+		
+		if(c.moveToFirst()){
+			do {
+				Match m = new Match();
+				
+				m.setId(c.getInt(c.getColumnIndex(MATCH_ID)));
+				m.setOver(c.getInt(c.getColumnIndex(MATCH_OVER)));
+				m.setMatchDate(c.getString(c.getColumnIndex(MATCH_DATE)));
+				m.setMatchTime(c.getString(c.getColumnIndex(MATCH_TIME)));
+				
+				matchList.add(m);
+			} while(c.moveToNext());
+		}
+		return matchList;
+	}
 	
 
 }

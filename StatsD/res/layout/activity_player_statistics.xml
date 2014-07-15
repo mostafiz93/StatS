@@ -25,12 +25,29 @@
             <requestFocus />
         </AutoCompleteTextView>
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show Statistics"
-            android:onClick="showStatistics" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            
+            <Button
+                android:id="@+id/btnSubmit1"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showSingleStatistics"
+                android:text="Show Single Statistics" />
+            
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showAllStatistics"
+                android:text="Show All Statistics" />
+
+            
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listView1"

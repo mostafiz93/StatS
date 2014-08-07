@@ -1,7 +1,15 @@
 package com.example.statsd;
 
 public class Player {
-	int id, run, wickets, balls;
+	int id, run, wickets, balls, totalMatch;
+	public int getTotalMatch() {
+		return totalMatch;
+	}
+
+	public void setTotalMatch(int totalMatch) {
+		this.totalMatch = totalMatch;
+	}
+
 	double average, stRate;
 	
 	String Name, Address, Info;
@@ -19,9 +27,9 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", run=" + run + ", wickets=" + wickets
-				+ ", balls=" + balls + ", average=" + average + ", stRate="
-				+ stRate + ", Name=" + Name + ", Address=" + Address
-				+ ", Info=" + Info + "]";
+				+ ", balls=" + balls + ", totalMatch=" + totalMatch
+				+ ", average=" + average + ", stRate=" + stRate + ", Name="
+				+ Name + ", Address=" + Address + ", Info=" + Info + "]";
 	}
 	
 	public int getId() {

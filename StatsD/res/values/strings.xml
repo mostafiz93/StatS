@@ -7,5 +7,7 @@
     <string name="title_activity_player_statistics">PlayerStatistics</string>
     <string name="title_activity_add_match">AddMatch</string>
     <string name="title_activity_match_statistics">MatchStatistics</string>
+    <string name="title_activity_single_match">SingleMatch</string>
+    <string name="title_activity_add_inings">AddInings</string>
 
 </resources>

@@ -1,10 +1,11 @@
 package com.example.statsd;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import android.text.format.Time;
 
-public class Match {
+public class Match implements Serializable {
 	int id , over;
 	String matchTime;
 	String matchDate;

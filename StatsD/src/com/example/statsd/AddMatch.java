@@ -27,20 +27,13 @@ public class AddMatch extends Activity {
 	}
 	
 	public void submit(View v){
-		String strOver = etOver.getText().toString();
-		int over = Integer.parseInt(strOver);
-		String strDate = String.valueOf(dpDate.getDayOfMonth()) + "/"
+		Match m = new Match();
+		m.over = Integer.parseInt(etOver.getText().toString());
+		m.matchDate = String.valueOf(dpDate.getDayOfMonth()) + "/"
 				+ String.valueOf(dpDate.getMonth()) + "/"
 				+ String.valueOf(dpDate.getYear());
-		String strTime = String.valueOf(tpTime.getCurrentHour()) + ":"
+		m.matchTime = String.valueOf(tpTime.getCurrentHour()) + ":"
 				+ String.valueOf(tpTime.getCurrentMinute());
-//		Toast.makeText(this, strOver + " " + strDate + " " + 
-//				strTime, 1).show();
-		
-		Match m = new Match();
-		m.over = over;
-		m.matchDate = strDate;
-		m.matchTime = strTime;
 		
 		DatabaseHelper db = new DatabaseHelper(this);
 		long inserted = db.insertMatch(m);

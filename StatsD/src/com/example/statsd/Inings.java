@@ -1,15 +1,18 @@
 package com.example.statsd;
 
 public class Inings {
-	int id, bowls, runs, wickets;
+	int id, balls, runs, wickets;
 	String Date;
 	public Inings(int id, int bowls, int runs, int wickets, String date) {
 		super();
 		this.id = id;
-		this.bowls = bowls;
+		this.balls = bowls;
 		this.runs = runs;
 		this.wickets = wickets;
 		Date = date;
+	}
+	public Inings(){
+		//empty constructor
 	}
 	public int getId() {
 		return id;
@@ -17,11 +20,11 @@ public class Inings {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getBowls() {
-		return bowls;
+	public int getBalls() {
+		return balls;
 	}
-	public void setBowls(int bowls) {
-		this.bowls = bowls;
+	public void setBalls(int bowls) {
+		this.balls = bowls;
 	}
 	public int getRuns() {
 		return runs;
@@ -43,7 +46,7 @@ public class Inings {
 	}
 	@Override
 	public String toString() {
-		return "Inings [id=" + id + ", bowls=" + bowls + ", runs=" + runs
+		return "Inings [id=" + id + ", balls=" + balls + ", runs=" + runs
 				+ ", wickets=" + wickets + ", Date=" + Date + "]";
 	}
 	

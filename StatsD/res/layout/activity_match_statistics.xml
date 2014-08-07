@@ -1,5 +1,8 @@
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listView1"
+    
+    android:descendantFocusability="blocksDescendants" 
+    
+    android:id="@+id/lvMatches"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 

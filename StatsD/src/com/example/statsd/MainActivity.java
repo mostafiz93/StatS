@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -16,7 +17,8 @@ public class MainActivity extends Activity {
 	}
 	
 	
-	public void addPlayer(View v){
+	
+	/*public void addPlayer(View v){
 		Intent in = new Intent(this, AddPlayer.class);
 		startActivity(in);
 	}
@@ -24,7 +26,7 @@ public class MainActivity extends Activity {
 	public void addMatch(View v){
 		Intent in = new Intent(this, AddMatch.class);
 		startActivity(in);
-	}
+	}*/
 	
 	public void matchStatistics(View v){
 		Intent in = new Intent(this, MatchStatistics.class);

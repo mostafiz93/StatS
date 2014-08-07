@@ -49,7 +49,7 @@ public class CustomAdapterPlayerStats extends ArrayAdapter<Player> {
 			txtName.setText(plr.getName());
 			txtAddress.setText(plr.getAddress());
 			txtRun.setText("Run      : ");
-			txtRunValue.setText(String.valueOf(plr.getId()));
+			txtRunValue.setText(String.valueOf(plr.getRun()));
 			txtWicket.setText(" Wickets :");
 			txtWicketValue.setText(String.valueOf(plr.getWickets()));
 			txtAverage.setText("Average : ");

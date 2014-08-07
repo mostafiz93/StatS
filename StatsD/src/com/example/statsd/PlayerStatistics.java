@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +19,6 @@ import android.widget.Toast;
 public class PlayerStatistics extends Activity {
 	
 	DatabaseHelper db;
-	List<String> names;
 	
 	//list view
 	ListView lvPlayer;
@@ -40,15 +41,13 @@ public class PlayerStatistics extends Activity {
 		db  = new DatabaseHelper(this);
 		lvPlayer = (ListView) findViewById(R.id.listView1);
 		
-		names =  db.readAllNames();
+		List<String> names;
+		names =  db.readAllPlayerNames();
 		n  = names.size();;
 		int i;
 		nameArray = new String[n];
 		for(i=0;i<n;i++) 
 			nameArray[i] = names.get(i);
-		
-		
-		
 		
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 
@@ -60,8 +59,26 @@ public class PlayerStatistics extends Activity {
 		
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	   MenuInflater inflater = getMenuInflater();
+	   inflater.inflate(R.menu.main_menu, menu);
+	   return true;
+	}
+
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.add){
+			Intent in = new Intent(this, AddPlayer.class);
+			startActivity(in);
+		}
+		
+		return true;
+	}
+	
 	public void showSingleStatistics(View v){
-		String selectedPlayer = autoTv.getText().toString();
+		// causing error when autoTv is null(is not selected)
+		String selectedPlayer = autoTv.getText().toString();   
 		Player plr = db.readSinglePlyer(selectedPlayer);
 		
 		

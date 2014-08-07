@@ -5,7 +5,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:orientation="vertical" >
-	
+	<!--  
 	    <Button
 	        android:id="@+id/btnAddPlayer"
 	        android:text="Add Player"
@@ -41,6 +41,8 @@
 			android:layout_marginBottom="15dp"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content" />
+	
+		-->
 	
 	    <Button
 	        android:id="@+id/btnMatchStats"
